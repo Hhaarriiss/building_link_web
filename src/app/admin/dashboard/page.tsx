@@ -74,16 +74,16 @@ export default function Page() {
   };
 
   return (
-    <div className="[--header-height:calc(--spacing(14))]">
-      <SidebarProvider className="flex flex-col">
-        <SiteHeader />
-        <div className="flex flex-1">
-          <AppSidebar />
-          <SidebarInset>
-            <div className="flex flex-1 flex-col gap-4 p-4">
+    <SidebarProvider>
+      <div className="flex min-h-screen w-full">
+        <AppSidebar />
+        <SidebarInset className="flex flex-1 flex-col">
+          <SiteHeader />
+          <div className="flex flex-1 flex-col gap-4 p-4">
 
-              <div className="grid auto-rows-min gap-4 md:grid-cols-3 min-h-[40vh] items-stretch">
+              <div className="grid gap-4 md:grid-cols-3 min-h-[50vh] items-stretch">
                 <HoverCard 
+                  className="flex flex-col "
                   shadowColor="rgb(59,130,246,0.3)" 
                   shadowColorDark="rgb(147,197,253,0.4)"
                 >
@@ -91,11 +91,12 @@ export default function Page() {
                     <CardTitle>Visitor Statistics</CardTitle>
                     <CardDescription>Last 6 months overview</CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="flex-1">
                     <ChartAreaLegend data={chartData} config={chartConfig} />
                   </CardContent>
                 </HoverCard>
                 <HoverCard 
+                  className="flex flex-col"
                   shadowColor="rgb(168,85,247,0.3)" 
                   shadowColorDark="rgb(196,181,253,0.4)"
                 >
@@ -103,11 +104,12 @@ export default function Page() {
                     <CardTitle>Card 2</CardTitle>
                     <CardDescription>Card description</CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="flex-1">
                     <p>Card content goes here</p>
                   </CardContent>
                 </HoverCard>
                 <HoverCard 
+                  className="flex flex-col"
                   shadowColor="rgb(236,72,153,0.3)" 
                   shadowColorDark="rgb(249,168,212,0.4)"
                 >
@@ -115,7 +117,7 @@ export default function Page() {
                     <CardTitle>Card 3</CardTitle>
                     <CardDescription>Card description</CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="flex-1">
                     <p>Card content goes here</p>
                   </CardContent>
                 </HoverCard>
@@ -142,10 +144,9 @@ export default function Page() {
               </HoverCard>
               </div>
              
-            </div>
-          </SidebarInset>
-        </div>
-      </SidebarProvider>
-    </div>
+          </div>
+        </SidebarInset>
+      </div>
+    </SidebarProvider>
   )
 }
