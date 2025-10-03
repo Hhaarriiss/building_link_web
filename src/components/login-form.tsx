@@ -7,15 +7,23 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { ReusableImage } from "@/components/reusable-image"
 
 // Dummy credentials
 const ADMIN_EMAIL = "admin@example.com";
 const ADMIN_PASSWORD = "admin123";
 
+interface LoginFormProps extends React.ComponentProps<"div"> {
+  image?: string;
+  imageAlt?: string;
+}
+
 export function LoginForm({
   className,
+  image = "/placeholder.svg",
+  imageAlt = "Login background",
   ...props
-}: React.ComponentProps<"div">) {
+}: LoginFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -138,11 +146,13 @@ export function LoginForm({
               </div>
             </div>
           </form>
-          <div className="bg-muted relative hidden md:block">
-            <img
-              src="/placeholder.svg"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          <div className="bg-muted relative hidden md:block overflow-hidden">
+            <ReusableImage
+              src={image}
+              alt={imageAlt}
+              fill={true}
+              objectFit="cover"
+              priority={true}
             />
           </div>
         </CardContent>

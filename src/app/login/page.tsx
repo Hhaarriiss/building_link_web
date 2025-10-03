@@ -2,6 +2,7 @@
 
 import { LoginForm } from "@/components/login-form"
 import { ThemeToggle } from "@/components/theme-toggle"
+import loginImage from "@/assets/public/login-v1.jpeg"
 
 export default function LoginPage() {
   return (
@@ -14,7 +15,10 @@ export default function LoginPage() {
       </div>
       
       <div className="w-full max-w-sm md:max-w-3xl">
-        <LoginForm />
+        <LoginForm 
+          image={loginImage.src}
+          imageAlt="Login background illustration"
+        />
       </div>
     </div>
   )
